@@ -1,0 +1,7 @@
+
+def f8(x):
+{
+    if x # 1:
+        return 0;
+}
+

@@ -1,0 +1,1 @@
+x7 or (((x2 == 1) and (not k3)) and (x1 or not x7 <= k7))

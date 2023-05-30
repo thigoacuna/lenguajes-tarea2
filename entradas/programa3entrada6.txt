@@ -1,0 +1,22 @@
+
+def f4(arr):
+{
+    if len(arr) > 1:
+    {
+        x5 = f8(arr);
+        x6 = f9(arr);
+        x7 = arr[x5 + 1: f1(x6)];
+
+
+        for x in range(len(arr)):
+        {
+
+            for k:
+            {
+                return x;
+            }
+
+        }
+
+    }  
+}
