@@ -15,27 +15,28 @@ import nltk
 # X: Variable
 # S: Slice
 # IF: Invocación de Funciones
-#LC: Linea de código
-#BC: Bloque de código
-#ITE: If-Then-Else
-#VLC: Varias Lineas de Código
+# LC: Linea de código
+# BC: Bloque de código
+# ITE: If-Then-Else
+# VLC: Varias Lineas de Código
 
 # grammar definition
 grammar = """
-BC -> LC | VLC | ITE | '{' BC BC '}' | '{' BC '}'
-ITE -> 'if' EB':'   BC | 'if' EB:'    BC 'else:' BC
+defFunc -> 'def' func'('SV')'':' BC
+BC -> LC | VLC | ITE | '{' BC '}' | ITR | BC BC
+ITE -> 'if' EB':' BC | 'if' EB':' BC 'else'':' BC
+ITR -> 'for' A 'in' 'range''('EA','EA')'':' BC | 'while' EB':' BC | 'for' A 'in' 'range''('EA')'':' BC
 VLC -> LC LC | LC VLC
 LC -> ASSIGN';'
-ASSIGN -> ToAssign '=' ToAssign | ToAssign '=' func | ToAssign '=' EB | ToAssign '=' EA
+ASSIGN -> ToAssign '=' ToAssign | ToAssign '=' func | ToAssign '=' EB | ToAssign '=' EA | 'return' EB | 'return' EA
 ToAssign -> VAR | SLICING
 SLICING -> VAR'['EA']' | VAR'['EA':'']' | VAR'['':'EA']' | VAR'['EA':'EA']' | VAR'['EA':'EA':'EA']'
-defFunc -> 'def' func'('SV')'
 SV -> VAR | VAR','SV
 IF -> func'('EA')' | func'('VAR')'
 func -> 'f1' | 'f2' | 'f3' | 'f4' | 'f5' | 'f6' | 'f7' | 'f8' | 'f9' | 'f10' | 'len' | 'range'
 
 EB -> AB | 'not' EB | EB 'and' EB | EB 'or' EB | VAR | K | '('EB')'
-AB -> EA '==' EA | EA '!''=' EA | EA '>=' EA | EA '<''=' EA | EA '<' EA | EA '>' EA | 'True' | 'False'
+AB -> EA '==' EA | EA '!''=' EA | EA '>''=' EA | EA '<''=' EA | EA '<' EA | EA '>' EA | 'True' | 'False'
 
 EA -> A | '('EA')' | EA '+' EA | EA '*''*' EA | EA '//' EA | EA '-' EA | EA '%' EA | EA '*' EA | EA '/' EA
 A ->  K | VAR | unidad | IF | SLICING
